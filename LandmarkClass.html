@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Landmark Photo Album</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+        crossorigin="anonymous">
+    <!-- or -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+        crossorigin="anonymous">
+    <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/lightbox.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+    <style>
+        body {
+            background: #8360c3;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #2ebf91, #8360c3);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #2ebf91, #8360c3);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-size: 200% 400%;
+            animation: bgChange 3s linear infinite;
+        }
+
+        @keyframes bgChange {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+        #wrapper {
+            width: 100%;
+            height: 100vh;
+            z-index: 10;
+            transition: 3s;
+        }
+
+        .navbar-brand {
+            text-shadow: 0px 2px 1px rgba(7, 7, 7, 0.8);
+            font-family: 'Rock Salt', cursive;
+        }
+
+        #navbarSupportedContent {
+            text-shadow: 0px 1px 1px rgba(7, 7, 7, 0.8);
+        }
+
+        .goBack {
+            bottom: 10px;
+            right: 25px;
+            display: none;
+            transition: .5s;
+            z-index: 587;
+        }
+
+        .goBack:hover {
+            background: #10101081 !important;
+        }
+
+        header {
+            width: 100%;
+            height: 80px;
+            position: absolute;
+            box-shadow: 0px 5px 10px #000;
+            top: 5%;
+            z-index: 99;
+            transition: 1s;
+        }
+
+        .navbar {
+            height: 60px;
+            top: 0;
+        }
+        #musicOn {
+            cursor: pointer;
+        }
+
+        .fixed {
+            position: fixed;
+            left: 0;
+            top: -30px;
+            width: 100%;
+            background: #009FFF;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #ec2F4B, #009FFF);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            /* background: rgba(218, 218, 235, 0.378); */
+            background-size: 200% 400%;
+            animation: wdChange 15s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        .card {
+            background: rgba(59, 52, 52, 0.151);
+        }
+
+        .card-header h2 {
+            margin-top: 70px !important;
+            margin-bottom: 50px !important;
+            text-align: center;
+            font-size: 4rem;
+        }
+
+        .gallery>ul {
+            list-style: none;
+            margin-bottom: 0;
+        }
+
+        .gallery>ul>li {
+            float: left;
+            margin-bottom: 15px;
+            margin-right: 0px;
+            width: 200px;
+        }
+
+        .gallery>ul>li a {
+            border: 3px solid #FFF;
+            border-radius: 3px;
+            display: block;
+            overflow: hidden;
+            position: relative;
+            float: left;
+        }
+
+        .gallery>ul>li a>img {
+            -webkit-transition: -webkit-transform 0.15s ease 0s;
+            -moz-transition: -moz-transform 0.15s ease 0s;
+            -o-transition: -o-transform 0.15s ease 0s;
+            transition: transform 0.15s ease 0s;
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+            height: 100%;
+            width: 100%;
+        }
+
+        .gallery>ul>li a:hover>img {
+            -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+
+        .gallery>ul>li a:hover .gallery-poster>img {
+            opacity: 1;
+        }
+
+        .gallery>ul>li a .gallery-poster {
+            background-color: rgba(0, 0, 0, 0.1);
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            -webkit-transition: background-color 0.15s ease 0s;
+            -o-transition: background-color 0.15s ease 0s;
+            transition: background-color 0.15s ease 0s;
+        }
+
+        .gallery>ul>li a .gallery-poster>img {
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            -webkit-transition: opacity 0.3s ease 0s;
+            -o-transition: opacity 0.3s ease 0s;
+            transition: opacity 0.3s ease 0s;
+        }
+
+        .gallery>ul>li a:hover .gallery-poster {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery .justified-gallery>a>img {
+            -webkit-transition: -webkit-transform 0.15s ease 0s;
+            -moz-transition: -moz-transform 0.15s ease 0s;
+            -o-transition: -o-transform 0.15s ease 0s;
+            transition: transform 0.15s ease 0s;
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+            height: 100%;
+            width: 100%;
+        }
+
+        .gallery .justified-gallery>a:hover>img {
+            -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+
+        .gallery .justified-gallery>a:hover .gallery-poster>img {
+            opacity: 1;
+        }
+
+        .gallery .justified-gallery>a .gallery-poster {
+            background-color: rgba(0, 0, 0, 0.1);
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            -webkit-transition: background-color 0.15s ease 0s;
+            -o-transition: background-color 0.15s ease 0s;
+            transition: background-color 0.15s ease 0s;
+        }
+
+        .gallery .justified-gallery>a .gallery-poster>img {
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            -webkit-transition: opacity 0.3s ease 0s;
+            -o-transition: opacity 0.3s ease 0s;
+            transition: opacity 0.3s ease 0s;
+        }
+
+        .gallery .justified-gallery>a:hover .gallery-poster {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery .video .gallery-poster img {
+            height: 48px;
+            margin-left: -24px;
+            margin-top: -24px;
+            opacity: 0.8;
+            width: 48px;
+        }
+
+        .gallery.dark>ul>li a {
+            border: 3px solid #04070a;
+        }
+
+        @media only screen and (max-width:576px) {
+            .gallery>ul>li {
+                float: left;
+                margin: 10px 20px;
+                /* margin-bottom: 15px;
+            margin-right: 20px; */
+                width: 320px;
+            }
+            .card-header h2 {
+                text-align: center;
+                font-size: 2rem;
+            }
+            .cardCube {
+                height: 200px;
+            }
+        }
+
+        @media only screen and (max-width:320px) {
+            .gallery>ul>li {
+                float: left;
+                margin: 5px 5px;
+                /* margin-bottom: 15px;
+            margin-right: 20px; */
+                width: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper" class="">
+        <div>
+            <butten class="btn position-fixed bg-transparent text-light goBack border-white">TOP</butten>
+        </div>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-transparent mt-4">
+                <a class="navbar-brand" href="" onclick="location.href=`./index.html`;">IOWEI</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="" onclick="window.open(`./PeopleClass.html`)">人物
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="" onclick="window.open(`./FlowerClass.html`)">花賞
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="" onclick="window.open(`./CaptureClass.html`)">隨拍
+                            </a>
+                        </li>
+                        <li class="nav-item active d-flex">
+                            <sapn id="musicOn" class="nav-link text-dark">Music On
+                                <i class="fas fa-volume-up mx-2"></i>
+                            </sapn>
+
+                            <audio id="audioPlay" class="px-3 musicBar" loop preload="auto">
+                                <source src="images/relax.mp3" type="audio/ogg">
+                                <source src="images/relax.mp3" type="audio/mpeg">
+                            </audio>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="card" id="people">
+            <div class="card-header text-white-50 mt-5">
+                <h2 class="mt-5">景點</h2>
+            </div>
+            <div class="card-body py-5">
+                <div class="gallery">
+                    <ul id="lightgallery" class="list-unstyled row">
+                            <!-- <h2 class="mt-2">景點地標</h2> -->
+                            <li id="landmark" class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/1-375.jpg 375, limg/1-480.jpg 480, limg/1.jpg 800"
+                                data-src="limg/1-1600.jpg" data-sub-html="<h4>義大利 羅馬</h4><p>萬神殿</p>" data-pinterest-text="Pin it1"
+                                data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-1.jpg" alt="Thumb-1">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/2-375.jpg 375, limg/2-480.jpg 480, limg/2.jpg 800" data-src="limg/2-1600.jpg"
+                                data-sub-html="<h4>義大利 佛羅倫斯</h4><p>聖母百花大教堂</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-2.jpg" alt="Thumb-2">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/3-375.jpg 375, limg/3-480.jpg 480, limg/3.jpg 800" data-src="limg/3-1600.jpg"
+                                data-sub-html="<h4>義大利 威尼斯</h4><p>布拉諾彩色島</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-3.jpg" alt="Thumb-3">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/4-375.jpg 375, limg/4-480.jpg 480, limg/4.jpg 800" data-src="limg/4-1600.jpg"
+                                data-sub-html="<h4>義大利 威尼斯</h4><p>河市蜃樓</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-4.jpg" alt="Thumb-4">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/5-375.jpg 375, limg/5-480.jpg 480, limg/5.jpg 800" data-src="limg/5-1600.jpg"
+                                data-sub-html="<h4>義大利</h4><p>海岸羅盤</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-5.jpg" alt="Thumb-5">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/6-375.jpg 375, limg/6-480.jpg 480, limg/6.jpg 800" data-src="limg/6-1600.jpg"
+                                data-sub-html="<h4>西班牙</h4><p>水道橋</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-6.jpg" alt="Thumb-6">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/7-375.jpg 375, limg/7-480.jpg 480, limg/7.jpg 800" data-src="limg/7-1600.jpg"
+                                data-sub-html="<h4>西班牙 格拉那達</h4><p>阿爾罕布拉宮</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-7.jpg" alt="Thumb-7">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/8-375.jpg 375, limg/8-480.jpg 480, limg/8.jpg 800" data-src="limg/8-1600.jpg"
+                                data-sub-html="<h4>西班牙</h4><p>小鎮巷道</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-8.jpg" alt="Thumb-8">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/9-375.jpg 375, limg/9-480.jpg 480, limg/9.jpg 800" data-src="limg/9-1600.jpg"
+                                data-sub-html="<h4>西班牙 塞維亞</h4><p>西班牙廣場</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-9.jpg" alt="Thumb-9">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/10-375.jpg 375, limg/10-480.jpg 480, limg/10.jpg 800" data-src="limg/10-1600.jpg"
+                                data-sub-html="<h4>西班牙 巴塞隆納</h4><p>聖家堂</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-10.jpg" alt="Thumb-10">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/11-375.jpg 375, limg/11-480.jpg 480, limg/11.jpg 800" data-src="limg/11-1600.jpg"
+                                data-sub-html="<h4>西班牙 巴塞隆納</h4><p>米拉之家</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-11.jpg" alt="Thumb-11">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/12-375.jpg 375, limg/12-480.jpg 480, limg/12.jpg 800" data-src="limg/12-1600.jpg"
+                                data-sub-html="<h4>西班牙 巴塞隆納</h4><p>巴特羅之家</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-12.jpg" alt="Thumb-12">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/13-375.jpg 375, limg/13-480.jpg 480, limg/13.jpg 800" data-src="limg/13-1600.jpg"
+                                data-sub-html="<h4>日本 富士山</h4><p>湖山一色</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-13.jpg" alt="Thumb-13">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/14-375.jpg 375, limg/14-480.jpg 480, limg/14.jpg 800" data-src="limg/14-1600.jpg"
+                                data-sub-html="<h4>日本 富士山</h4><p>山湖漁隱</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-14.jpg" alt="Thumb-14">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/15-375.jpg 375, limg/15-480.jpg 480, limg/15.jpg 800" data-src="limg/15-1600.jpg"
+                                data-sub-html="<h4>法國 巴黎</h4><p>凱旋門</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-15.jpg" alt="Thumb-15">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/16-375.jpg 375, limg/16-480.jpg 480, limg/16.jpg 800" data-src="limg/16-1600.jpg"
+                                data-sub-html="<h4>法國 巴黎</h4><p>艾菲爾鐵塔</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-16.jpg" alt="Thumb-16">
+                                </a>
+                            </li>
+                            <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="limg/17-375.jpg 375, limg/17-480.jpg 480, limg/17.jpg 800" data-src="limg/17-1600.jpg"
+                                data-sub-html="<h4>法國 巴黎</h4><p>羅浮宮</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                                <a href="">
+                                    <img class="img-responsive" src="limg/thumb-17.jpg" alt="Thumb-17">
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+    <script>
+        lightGallery(document.getElementById('lightgallery'));
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+
+        $("#musicOn").click(function () {
+            let aud = document.getElementById("audioPlay");
+            if (aud.paused) {
+                $("#musicOn").removeClass("text-dark");
+                aud.play();
+            } else {
+                aud.pause();
+                $("#musicOn").addClass("text-dark");
+            }
+        });
+
+        $("#cubeMouseEvent").hover(function () {
+
+            $("#cubeMouseEvent").css("animation-play-state", "paused");
+            $(".cube div").css("opacity", "1");
+        }, function () {
+            $("#cubeMouseEvent").css("animation-play-state", "running");
+            $(".cube div").css("opacity", "0.8");
+        });
+
+        $(window).scroll(function () {
+            let scrollTop = $(this).scrollTop();
+            if (scrollTop > 120) {
+                $("header").addClass("fixed");
+                $(".goBack").css("display", "block");
+                $(".goBack").click(function () {
+                    $('html,body').scrollTop(0);
+                });
+            } else {
+                $("header").removeClass("fixed");
+                $(".goBack").css("display", "none");
+            }
+        });
+        $("#photoSlideP > div:gt(0)").hide();
+
+
+        $(".photoList li a").click(function () {
+            $(this).closest("li").addClass("active").siblings().removeClass("active");
+        });
+        $(".dropdown-menu").click(function () {
+            $(".photoList li a").closest("li").addClass("active").siblings().removeClass("active");
+        });
+    </script>
+</body>
+
+</html>
