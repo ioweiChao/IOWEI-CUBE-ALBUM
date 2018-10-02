@@ -148,7 +148,7 @@ body {
 @keyframes test {
     0% {
         background: #12c2e9;
-        transform: translate3d(6rem, 6rem, 0rem) rotate(60deg) skewX(100deg) scale(1.1);
+        transform: translate3d(4rem, 6rem, 0rem) rotate(60deg) skewX(80deg) scale(1.1);
     }
     25% {
         opacity: .6;
@@ -164,7 +164,7 @@ body {
     }
     100% {
         opacity: .4;
-        transform: translate3d(6rem, 6rem, 0rem) rotate(60deg) skewX(100deg) scale(1);
+        transform: translate3d(4rem, 6rem, 0rem) rotate(60deg) skewX(80deg) scale(1);
 
     }
 }
