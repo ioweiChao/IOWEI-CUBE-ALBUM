@@ -395,13 +395,12 @@
     <script>
         function isMobile() {
             try { document.createEvent("TouchEvent"); return true; }
-            catch (e) { return false; }
+            catch (e) { return false; };
         }
         if (isMobile()) {setTimeout("location.href='./mobile.html'",1000);}
         else{
             console.log('not happened');
         }
-    
 
         $(".displayNone").css("display", "none");
 
