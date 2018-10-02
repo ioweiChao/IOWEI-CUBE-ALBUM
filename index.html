@@ -397,7 +397,7 @@
             try { document.createEvent("TouchEvent"); return true; }
             catch (e) { return false; }
         }
-        if (isMobile()) {setTimeout("./mobile.html'",1000);}
+        if (isMobile()) {setTimeout("location.href='./mobile.html'",1000);}
         else{
             console.log('not happened');
         }
