@@ -148,10 +148,11 @@ body {
 @keyframes test {
     0% {
         background: #12c2e9;
-        transform: translate3d(2rem, 3rem, 0rem) rotate(70deg) skewX(100deg)skewY(-10deg) scale(1.1);
+        transform: translate3d(3rem, 3rem, 0rem) rotate(-70deg) skewX(100deg)skewY(80deg) scale(1.1);
     }
     25% {
         opacity: .6;
+        width: 1px;
     }
     50% {
         opacity: 0;
@@ -161,21 +162,23 @@ body {
     75% {
         background: #1de9d1;
         opacity: 0.8;
+        width: 1px;
+        height: 1px;
     }
     100% {
         opacity: .4;
-        transform: translate3d(1rem, 4rem, 0rem) rotate(70deg) skewX(100deg)skewY(80deg) scale(1);
+        transform: translate3d(1rem, 1rem, 0rem) rotate(70deg) skewX(100deg)skewY(80deg) scale(1);
 
     }
 }
 
 .item {
     margin: -5px;
-    width: 5%;
+    width: 25%;
     height: 25%;
     animation: test 10s linear infinite;
     transition: 0.5s;
-    border-radius: 50% 10%;
+    border-radius: 50%;
     opacity: 0;
 
 }
