@@ -494,6 +494,9 @@ header {
 }
 
 @media only screen and (max-width:320px) {
+    #workSection{
+        margin-top: 100px;
+    }
     .lightbox img {
         /** Pad the lightbox image */
         max-width: 200px;
